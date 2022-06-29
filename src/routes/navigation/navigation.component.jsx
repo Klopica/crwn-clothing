@@ -9,8 +9,6 @@ import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component
 
 import { CartContext } from '../../contexts/cart.context'
 
-// import { selectCurrentUser } from '../../store/user/user.selector' // Ne radi
-
 import { signOutUser } from '../../utils/firebase/firebase.utils'
 // import './navigation.styles.scss'
 import { 
@@ -23,8 +21,8 @@ import { selectCurrentUser } from '../../store/user/user.selector'
 
 const Navigation = () => {
 
-  // const currentUser = useSelector(selectCurrentUser)
-  const currentUser = useSelector((state) => state.user.currentUser)
+  const currentUser = useSelector(selectCurrentUser)
+  // const currentUser = useSelector((state) => state.user.currentUser)
 
   const { isCartOpen } = useContext(CartContext)
 
