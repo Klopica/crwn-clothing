@@ -60,11 +60,9 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
 
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, 'categories')
-
   const q = query(collectionRef)
 
   const querySnapshot = await getDocs(q)
-
   return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 }
 
@@ -73,13 +71,9 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
   if(!userAuth) return;
 
   const userDocRef = doc(db, 'users', userAuth.uid)
-  // console.log(userDocRef)
-
+  
   const userSnapshot = await getDoc(userDocRef)
-  // console.log(userSnapshot)
-
-  // if user data does not exist
-  // create / Set the document with the data from userAuth in my collection
+  
   if(!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
@@ -95,9 +89,7 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
       console.log('Error creating the user: ', error.message)
     }
   }
-
-  // uf user data exists
-  // return userDocRef
+  
   return userDocRef
 }
 
